@@ -1,9 +1,11 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 
-import LogoApp from '../../assets/logo.png'
+import { FaCode } from 'react-icons/fa'
 import Input from '../../components/input'
-import { FaEnvelope, FaLock } from 'react-icons/fa'
+import Button from '../../components/button'
+
+import LogoApp from '../../assets/logo.png'
 
 import {
   Container,
@@ -13,9 +15,8 @@ import {
   Form,
   FormActions
 } from './styles'
-import Button from '../../components/button'
 
-const SignInDev: React.FC = () => {
+const SignInClient: React.FC = () => {
   return (
     <Container>
       <WrapperLogo>
@@ -24,19 +25,11 @@ const SignInDev: React.FC = () => {
 
       <Content>
         <Form>
-          <h1>Login comme Dev</h1>
-
-          <Input icon={FaEnvelope} placeholder="e-mail" type="email" />
-          <Input
-            icon={FaLock}
-            placeholder="password"
-            isPassword
-            type="password"
-          />
-
+          <h1>Login comme Client</h1>
+          <Input icon={FaCode} placeholder="code" type="text" />
           <Button>Valider</Button>
           <FormActions>
-            <Link to="signup-dev">Créer votre compte</Link>
+            <Link to="/">Créer votre compte</Link>
             <Link to="/">Retourner</Link>
           </FormActions>
         </Form>
@@ -45,4 +38,4 @@ const SignInDev: React.FC = () => {
   )
 }
 
-export default SignInDev
+export default SignInClient

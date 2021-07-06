@@ -3,8 +3,7 @@ import React, {
   InputHTMLAttributes,
   useState,
   useRef,
-  useCallback,
-  ChangeEventHandler
+  useCallback
 } from 'react'
 import { IconBaseProps } from 'react-icons'
 import { FaEye, FaEyeSlash } from 'react-icons/fa'

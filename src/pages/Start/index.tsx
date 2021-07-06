@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useCallback } from 'react'
 import { useHistory } from 'react-router'
 import { FaCode, FaUsers } from 'react-icons/fa'
 
@@ -15,9 +15,13 @@ import {
 const Start: React.FC = () => {
   const history = useHistory()
 
-  const navigate = (path: string) => {
-    history.push(path)
-  }
+  const navigate = useCallback(
+    (path: string) => {
+      history.push(path)
+    },
+    [history]
+  )
+
   return (
     <Container>
       <WrapperLogo>
@@ -32,7 +36,10 @@ const Start: React.FC = () => {
           <span>Entrer comme dev</span>
         </EntryCardItem>
 
-        <EntryCardItem color={'#111111'}>
+        <EntryCardItem
+          color={'#111111'}
+          onClick={() => navigate('signin-client')}
+        >
           <FaUsers size={50} />
           <span>Entrer comme Client</span>
         </EntryCardItem>
