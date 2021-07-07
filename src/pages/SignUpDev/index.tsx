@@ -1,5 +1,5 @@
 import React, { ChangeEvent, FormEvent, useCallback, useState } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useHistory } from 'react-router-dom'
 import { FaEnvelope, FaLock, FaUser } from 'react-icons/fa'
 
 import LogoApp from '../../assets/logo.png'
@@ -19,6 +19,8 @@ import api from '../../services/api'
 import { store } from 'react-notifications-component'
 
 const SignUpDev: React.FC = () => {
+  const history = useHistory()
+
   const [model, setModel] = useState<IDevCreateData>({
     name: '',
     email: '',
@@ -56,6 +58,7 @@ const SignUpDev: React.FC = () => {
           }
         })
 
+        history.push('signin-dev')
         console.log('response: ', response)
       } catch (error) {
         store.addNotification({
@@ -73,7 +76,7 @@ const SignUpDev: React.FC = () => {
         })
       }
     },
-    [model]
+    [model, history]
   )
 
   return (
