@@ -6,6 +6,7 @@ import GlobalStyles from './styles/GlobalStyles'
 
 import 'react-notifications-component/dist/theme.css'
 import AppProvider from './context'
+import AppLayout from './components/appLayout'
 
 const App: React.FC = () => {
   return (
@@ -13,7 +14,9 @@ const App: React.FC = () => {
       <BrowserRouter>
         <ReactNotification />
         <AppProvider>
-          <Routes />
+          <AppLayout>
+            <Routes />
+          </AppLayout>
         </AppProvider>
       </BrowserRouter>
       <GlobalStyles />

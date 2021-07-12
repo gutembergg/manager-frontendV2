@@ -2,7 +2,7 @@ import React, {
   ChangeEvent,
   FormEvent,
   useCallback,
-  useContext,
+  useEffect,
   useState
 } from 'react'
 import { Link, useHistory } from 'react-router-dom'
@@ -20,13 +20,13 @@ import {
   FormActions
 } from './styles'
 import Button from '../../components/button'
-import { AuthContext } from '../../context/auth'
 import ICredentialsDevSession from '../../interfaces/ICredentialsDevSession'
 import { store } from 'react-notifications-component'
+import useAuth from '../../hooks/auth'
 
 const SignInDev: React.FC = () => {
   const history = useHistory()
-  const { user, signInDev } = useContext(AuthContext)
+  const { user, signInDev } = useAuth()
 
   const [model, setModel] = useState<ICredentialsDevSession>({
     email: '',
@@ -82,8 +82,12 @@ const SignInDev: React.FC = () => {
         })
       }
     },
-    [model, signInDev]
+    [model, signInDev, history]
   )
+
+  useEffect(() => {
+    console.log('user: ', user)
+  }, [user])
 
   return (
     <Container>
